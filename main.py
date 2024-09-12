@@ -18,25 +18,24 @@ def main():
     initial_horizontal_velocity = initial_velocity * cos(initial_angle_radians)
 
     # overall_time = 2 * (start_speed * sin(start_angle * pi / 180)) / g
-    horizontal_coords = []
-    vertical_coords = []
-    time = []
-    vertical_velocity = []
+    horizontal_coords = [0]
+    vertical_coords = [initial_height]
+    time = [0]
+    vertical_velocity = [initial_vertical_velocity]
 
-    t = 0
+    t = 0.2
     while True:
         x = initial_horizontal_velocity * t
         y = initial_height + initial_vertical_velocity * t - (1 / 2) * g * t ** 2
-        vertical_velocity.append(initial_vertical_velocity - g * t)
+        velocity_y = initial_vertical_velocity - g * t
+
+        if y < 0:
+            break
 
         horizontal_coords.append(x)
         vertical_coords.append(y)
+        vertical_velocity.append(velocity_y)
         time.append(t)
-
-        if y <= 0 and t == 0:
-            pass
-        elif y <= 0:
-            break
             
         t += 0.2
 
