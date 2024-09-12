@@ -42,11 +42,17 @@ def main():
     fig = plt.figure()
     gs = GridSpec(nrows=2, ncols=2, figure=fig)
     
-    ax1 = fig.add_subplot(gs[0, :])
-    ax1.plot(time, vertical_coords, color='red')
+    ax1 = fig.add_subplot(gs[0, 0])
+    ax1.plot(horizontal_coords, vertical_coords, color='red')
     ax1.set_title("Trajectory")
-    ax1.set_xlabel("time, s")
+    ax1.set_xlabel("distance, m")
     ax1.set_ylabel("height, m")
+    
+    ax4 = fig.add_subplot(gs[0, 1])
+    ax4.plot(time, vertical_coords, color='red')
+    ax4.set_title("Dependence of height on time")
+    ax4.set_xlabel("time, s")
+    ax4.set_ylabel("height, m")
 
     ax2 = fig.add_subplot(gs[1, 0])
     ax2.plot(time, vertical_velocity)
